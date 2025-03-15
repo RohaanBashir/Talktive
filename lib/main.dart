@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:talktive/RegisterPage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talktive/features/auth/presentation/RegisterPage.dart';
 import 'package:talktive/core/theme.dart';
-import 'package:talktive/login.dart';
+import 'package:talktive/features/auth/presentation/login.dart';
 import 'package:talktive/messages.dart';
+
+import 'features/auth/cubit/auth_cubit.dart';
 
 void main() {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +18,14 @@ class MyApp extends StatelessWidget {
   //Root of app
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
-      home: Messages(),
+    return MultiBlocProvider(
+      providers: [BlocProvider<AuthCubit>(create: (context) => AuthCubit())],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.darkTheme,
+        home: LoginPage(),
+      ),
     );
   }
 }

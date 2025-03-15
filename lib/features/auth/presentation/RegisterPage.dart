@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'CustomButton.dart';
-import 'customTextField.dart';
+import '../../../commonWidgets/CustomButton.dart';
+import '../../../commonWidgets/customTextField.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
