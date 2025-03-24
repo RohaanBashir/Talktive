@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:talktive/features/auth/presentation/RegisterPage.dart';
 import 'package:talktive/core/theme.dart';
 import 'package:talktive/features/auth/presentation/login.dart';
-import 'package:talktive/messages.dart';
+import 'package:talktive/features/conversation/cubit/messages_cubit.dart';
+
 
 import 'features/auth/cubit/auth_cubit.dart';
 
@@ -22,7 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider<AuthCubit>(create: (context) => AuthCubit())],
+      providers: [
+
+        BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
+        BlocProvider<MessagesCubit>(create: (context) => MessagesCubit()),
+
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,

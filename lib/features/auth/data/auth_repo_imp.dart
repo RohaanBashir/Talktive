@@ -4,22 +4,25 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:talktive/features/auth/repository/auth_repo.dart';
 
 import '../../../entities/MyUser.dart';
+import '../../../entities/base_url.dart';
 
 class AuthRepoImplementation extends AuthRepository {
 
-  final baseurl = "http://192.168.0.100:5000/auth";
+  String baseurl = apiUrl;
   final Duration timeoutDuration = Duration(seconds: 5);
+  final _storage = FlutterSecureStorage();
 
   @override
   Future<MyUser?> login(String email, String password) async {
     try {
       // Send a POST request with a timeout
       final response = await http.post(
-        Uri.parse("$baseurl/login"),
+        Uri.parse("$baseurl/auth/login"),
         body: jsonEncode({'email': email, 'password': password}),
         headers: {'Content-Type': 'application/json'},
       ).timeout(timeoutDuration); // Add timeout here
@@ -28,6 +31,8 @@ class AuthRepoImplementation extends AuthRepository {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         final token = responseData['token'];
         final userData = responseData['user'] as Map<String, dynamic>;
+
+        _storage.write(key: 'token', value: token);
 
         return MyUser(
           uid: userData['uid'],

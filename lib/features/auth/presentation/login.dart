@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talktive/commonWidgets/customTextField.dart';
 import 'package:talktive/features/auth/presentation/RegisterPage.dart';
-import 'package:talktive/messages.dart';
+import 'package:talktive/features/conversation/presentation/messages.dart';
 
 import '../../../commonWidgets/CustomButton.dart';
 import '../cubit/auth_cubit.dart';
