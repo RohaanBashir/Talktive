@@ -7,9 +7,12 @@ import 'package:talktive/messages.dart';
 
 import 'features/auth/cubit/auth_cubit.dart';
 
-void main() {
+void main(){
+
+
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
+
 }
 
 class MyApp extends StatelessWidget {

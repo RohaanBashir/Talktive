@@ -44,12 +44,12 @@ export const login = async (req: Request, res: Response): Promise<any> => {
       if (!isMatch) {
         return res.status(400).json({ message: "Invalid credentials" }); // Use return to stop execution
       }
-  
+      
       // Generate a JWT token
-      const token = jwt.sign({ id: user.id }, "mysecret", { expiresIn: "10h" });
+      const token = jwt.sign({id: user.uid}, "mysecret", { expiresIn: "10h" });
   
       // Send the token and user data in the response
-      res.json({ message: "Login successful", token, user });
+      res.json({ message: "Login successful", token, user});
     } catch (e) {
       console.error("Error during login:", e);
       res.status(500).json({ message: "User login unsuccessful", error: e instanceof Error ? e.message : "Unknown error" });

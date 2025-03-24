@@ -4,11 +4,20 @@ import 'package:flutter/material.dart';
 import '../../../commonWidgets/CustomButton.dart';
 import '../../../commonWidgets/customTextField.dart';
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController nameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passController = TextEditingController();
+
   TextEditingController confirmPassController = TextEditingController();
 
   @override

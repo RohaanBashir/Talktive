@@ -11,8 +11,8 @@ import '../../../entities/MyUser.dart';
 
 class AuthRepoImplementation extends AuthRepository {
 
-  final baseurl = "http://192.168.0.102:6000/auth";
-  final Duration timeoutDuration = Duration(seconds: 10);
+  final baseurl = "http://192.168.0.100:5000/auth";
+  final Duration timeoutDuration = Duration(seconds: 5);
 
   @override
   Future<MyUser?> login(String email, String password) async {
