@@ -3,18 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talktive/core/theme.dart';
 import 'package:talktive/features/auth/presentation/login.dart';
 import 'package:talktive/features/conversation/cubit/messages_cubit.dart';
-
-
 import 'features/auth/cubit/auth_cubit.dart';
 
 void main(){
-
-
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
-
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
