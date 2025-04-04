@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talktive/core/theme.dart';
+import 'package:talktive/features/messages/presentation/converstations.dart';
 
 import '../cubit/messages_cubit.dart';
 
@@ -12,15 +13,14 @@ class Messages extends StatefulWidget {
   State<Messages> createState() => _MessagesState();
 }
 
-
 class _MessagesState extends State<Messages> {
-
   @override
-  void initState(){
+  void initState() {
     final messageCubit = BlocProvider.of<MessagesCubit>(context);
     messageCubit.fetchConversations();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +70,31 @@ class _MessagesState extends State<Messages> {
                             itemCount: state.conversations.length,
                             itemBuilder:
                                 (BuildContext context, int index) =>
-                                    _listViewTile(
-                                      state
-                                          .conversations[index]!
-                                          .participantName,
-                                      state.conversations[index]!.lastMessage,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder:
+                                                (context) => Conversations(
+                                                  name:
+                                                      state
+                                                          .conversations[index]!
+                                                          .participantName,
+                                                  conversationId:
+                                                      state
+                                                          .conversations[index]!
+                                                          .conversationId,
+                                                ),
+                                          ),
+                                        );
+                                      },
+                                      child: _listViewTile(
+                                        state
+                                            .conversations[index]!
+                                            .participantName,
+                                        state.conversations[index]!.lastMessage,
+                                      ),
                                     ),
                           )
                           : Center(child: CircularProgressIndicator()),
@@ -87,6 +107,7 @@ class _MessagesState extends State<Messages> {
     );
   }
 }
+
 Widget _listViewTile(String userTitle, String userSubTitle) {
   return Padding(
     padding: const EdgeInsets.all(8.0),

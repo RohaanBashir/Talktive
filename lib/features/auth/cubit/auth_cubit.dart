@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 
 import '../../../entities/MyUser.dart';
@@ -11,6 +12,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   final authRepo = AuthRepoImplementation();
   MyUser? currentUser;
+  final _storage = FlutterSecureStorage();
 
   Future<void> login(String email, String password) async {
 
@@ -18,6 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthLoading());
       currentUser = await authRepo.login(email, password);
       if(currentUser!=null){
+        await _storage.write(key: "UserId", value: currentUser!.uid);
         emit(AuthSuccess());
       }else{
         emit(AuthError(message: "Something went wrong..."));

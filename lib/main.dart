@@ -4,6 +4,9 @@ import 'package:talktive/core/theme.dart';
 import 'package:talktive/features/auth/presentation/login.dart';
 import 'package:talktive/features/conversation/cubit/messages_cubit.dart';
 import 'features/auth/cubit/auth_cubit.dart';
+import 'features/conversation/presentation/messages.dart';
+import 'features/messages/cubit/message_cubit.dart';
+import 'features/messages/presentation/converstations.dart';
 
 void main(){
   runApp(const MyApp());
@@ -20,6 +23,7 @@ class MyApp extends StatelessWidget {
 
         BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
         BlocProvider<MessagesCubit>(create: (context) => MessagesCubit()),
+        BlocProvider<MessageCubit>(create: (context) => MessageCubit()),
 
       ],
       child: MaterialApp(

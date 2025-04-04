@@ -31,9 +31,7 @@ class AuthRepoImplementation extends AuthRepository {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         final token = responseData['token'];
         final userData = responseData['user'] as Map<String, dynamic>;
-
-        _storage.write(key: 'token', value: token);
-
+        await _storage.write(key: 'token', value: token);
         return MyUser(
           uid: userData['uid'],
           token: token,
