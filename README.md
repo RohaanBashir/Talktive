@@ -37,7 +37,7 @@ A real-time chat application built using **Flutter**, following **CLEAN Architec
 ---
 
 ## 🚀 Getting Started
-### 🖥️ Backend
+### 🖥️ Backend/Frontend
 
 ```bash
 cd Talktivebackend
