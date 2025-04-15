@@ -1,4 +1,4 @@
-A real-time chat application built using **Flutter**, following **CLEAN Architecture** and **BLoC** for scalable frontend development. The backend is powered by **Node.js + TypeScript**, utilizing **WebSockets** for real-time communication and **PostgreSQL** as the database.
+A real-time chat application built using **Flutter**, following **CLEAN Architecture** and **BLoC** for scalable frontend development. The backend is powered by **Node.js + TypeScript**, utilizing **WebSockets** for real-time communication and **PostgreSQL** as the database. Some Features missing like, contacts routes, messages time
 
 ---
 
