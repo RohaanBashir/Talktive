@@ -15,6 +15,13 @@ A real-time chat application built using **Flutter**, following **CLEAN Architec
 
 ## 📱 Screenshots
 
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="ssss/1.jpg" width="200"/>
+  <img src="ssss/2.jpg"  width="200"/>
+  <img src="ssss/3.jpg" width="200"/>
+  <img src="ssss/4.jpg" width="200"/>
+</div>
+
 
 ---
 
